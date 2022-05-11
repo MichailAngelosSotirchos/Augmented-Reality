@@ -12,6 +12,43 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
     <script src="build/aframe-speech-command-component.js"></script>
 
+    <script>
+           AFRAME.registerComponent("marker-distance", {
+
+               init: function () {
+               this.hydmod = document.querySelector("#hydmod")
+               this.oxymod = document.querySelector("#oxymod")
+               this.H2O = document.querySelector("#H20")
+               this.markerHydro = document.querySelector("#hyrdo_mark")
+               this.markerOxy = document.querySelector("#oxy_mark")
+           },
+           tick: function()
+           {
+               var markerHydroPos, markerOxyPos, markerDistance
+
+               markerHydroPos = new THREE.Vector3();
+               this.markerHydro.object3D.getWorldPosition(markerHydroPos);
+
+               markerOxyPos = new THREE.Vector3();
+               this.markerOxy.object3D.getWorldPosition(markerOxyPos);
+
+               markerDistance = markerHydroPos.distanceTo(markerOxyPos);
+
+               if (markerDistance<2)
+               {
+                   this.hydmod.setAttribute("visible", false)
+                   this.oxymod.setAttribute("visible", false)
+                   this.H2Omod.setAttribute("visible", true)
+               }
+               else
+               {
+                   this.hydmod.setAttribute("visible",true)
+                   this.oxymod.setAttribute("visible",true)
+                   this.H2Omod.setAttribute("visible", false)
+               }
+           },
+       });
+       </script>
 
     <body style="margin : 0px; overflow: hidden;">
         <a-scene
@@ -23,12 +60,28 @@
 
         <a-assets>
           <img id="dpsd19125" src="assets/dpsd19125.png">
+          <img id="hydrogen" src="assets/card-H.png.png">
+          <img id="oxygen" src="assets/card-O.png">
+          <a-asset-item id="oxy_model" src="assets/Oxy_Model.glb"></a-asset-item>
+          <a-asset-item id="hyd_model" src="assets/Hydro_Model.glb"></a-asset-item>
+          <a-asset-item id="H2O_model" src="assets/H2O_Model.glb"></a-asset-item>
         </a-assets>
 
         <a-marker preset="custom" type="pattern" url="assets/pattern-dpsd19125.patt">
           <a-image src="#dpsd19125" rotation="-90 0 0"></a-image>
           <a-text value="Michail-Angelos Sotirchos" color="green" align="center" position="0 0 -0.7" rotation="-90 0 0"></a-text>
         </a-marker>
+
+        <a-marker id="oxy_mark"preset="custom" type="pattern" url="assets/pattern-card-O.patt">
+          <a-image src="#oxygen" rotation="-90 0 0"></a-image>
+          <a-entity id="oxymod" gltf-model="Oxy_Model.glb"></a-entity>
+        <a-marker>
+
+        <a-marker id="hydro_mark" preset="custom" type="pattern" url="assets/pattern-card-H.patt">
+          <a-image src="#hydrogen" rotation="-90 0 0"></a-image>
+          <a-entity id="hydmod" gltf-model="Hydro_Model.glb"></a-entity>
+          <a-entity id="H2Omod" gltf-model="H2O_Model.glb" visible="false"></a-entity>
+        <a-marker>
 
 
         <a-entity camera></a-entity>

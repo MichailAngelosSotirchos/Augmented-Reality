@@ -18,22 +18,18 @@
     vr-mode-ui="enabled: false;"
     renderer="logarithmicDepthBuffer: true;"
     embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+  >
 
         <a-assets>
-          <img id="test_image" src="assets/dpsd19125.png">
+          <img id="dpsd19125" src="assets/dpsd19125.png">
         </a-assets>
 
         <a-marker preset="hiro">
-            <a-image src="#test_image"></a-image>
-        <a-marker>
-
-        <a-marker preset="custom" type="pattern" url="assets/pattern-dpsd19125.patt">
-        <a-entity id="box" geometry="primitive: box; width: 0.2; depth: 0.2; height: 0.2" position="0 0 0" material="color: #4CC3D9"></a-entity>
+          <a-image src="#dpsd19125" rotation="90 0 0"></a-image>
+          <a-text value="Michail-Angelos Sotirchos" color="green" align="center" position="0 0 -0.7" rotation="-90 0 0"></a-text>
         </a-marker>
-
         <a-entity camera></a-entity>
-
         </a-scene>
     </body>
 </html>

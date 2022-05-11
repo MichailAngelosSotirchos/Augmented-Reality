@@ -18,22 +18,21 @@
     vr-mode-ui="enabled: false;"
     renderer="logarithmicDepthBuffer: true;"
     embedded
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
-  >
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+
         <a-marker preset="hiro">
             <a-entity id="box" geometry="primitive: box; width: 0.2; depth: 0.2; height: 0.2" position="0 0 0" material="color: #4CC3D9"></a-entity>
-            <a-entity geometry="primitive: cylinder; height: 0.5; radius: 0.2" position="1 0 0" material="color: #FFA448"></a-entity>
-            <a-entity geometry="primitive: sphere; radius: 0.3" position= "-1 0 0" material="color: #C1D575"></a-entity>
+            <a-sphere id="sphere" position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+            <a-cylinder id="cylinder" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+            <a-entity position="0 2.25 -15" particle-system="preset: snow"></a-entity>
         </a-marker>
 
-        <a-entity id="annyang" annyang-speech-recognition></a-entity>
-        <a-entity id="snow_voice" position="0 2.25 -15" particle-system="preset: snow" visible="false"
-              speech-command__start="command: start; type: attribute; attribute: visible; value: true;"
-              speech-command__stop="command: stop; type: attribute; attribute: visible; value: false;">
-        </a-entity>
-
+        <a-marker preset="custom" type="pattern" url="assets/pattern-dpsd19125.patt">
+        <a-entity id="box" geometry="primitive: box; width: 0.2; depth: 0.2; height: 0.2" position="0 0 0" material="color: #4CC3D9"></a-entity>
+        </a-marker>
 
         <a-entity camera></a-entity>
-        <a-scene>
+
+        </a-scene>
     </body>
 </html>

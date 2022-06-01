@@ -16,11 +16,32 @@
 		embedded
 		arjs='sourceType: webcam; debugUIEnabled: false;'>
 
+        <a-assets>
+            <a-asset-item id="coin"
+                src="assets/Coin_Animation.fbx">
+            </a-asset-item>
+        </a-assets>
+
+
+        <a-entity
+            fbx-model="#coin"
+            scale="20 20 20"
+            gps-entity-place="latitude: 44.506477; longitude: 11.301524;">
+        </a-entity>
+
+        <a-sphere
+            material="color: red"
+            scale="20 20 20"
+            gps-entity-place="latitude: 44.506477; longitude: 11.301524;">
+        </a-sphere>
+
         <a-box
             material="color: red;"
             scale="20 20 20"
             gps-entity-place="latitude: 44.506477; longitude: 11.301524;">
         </a-box>
+
+        <a-entity
 
         <a-camera
             rotation-reader
@@ -29,4 +50,3 @@
 		</a-camera>
 	</a-scene>
 </body>
-
